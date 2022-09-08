@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="SpGUI.AudioTrack"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SpGUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="100">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="99"/>
+            <ColumnDefinition Width="1"/>
+        </Grid.ColumnDefinitions>
+        <Grid Background="#dfdfdf" Grid.Row="0" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label FontFamily="monospace" FontSize="14" Grid.Row="0" Name="trackName" HorizontalAlignment="Center">vocals</Label>
+            <Grid Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Width="100">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <CheckBox Grid.Column="0" VerticalAlignment="Center" Margin="0 0 0 5"  Checked="CheckBox_Click" Unchecked="CheckBox_Click" Name="checkMute">mute</CheckBox>
+                <CheckBox Grid.Column="1" VerticalAlignment="Center" Margin="0 0 0 5" Checked="CheckSolo_Checked" Unchecked="CheckSolo_Checked" Name="checkSolo">solo</CheckBox>
+            </Grid>
+        </Grid>
+        
+        <Grid Grid.Row="1" Background="#efefef" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0">L</Label>
+            <Slider Value="2" Minimum="1" Maximum="3" Grid.Column="1" VerticalAlignment="Center" Name="BalanceSlider" ValueChanged="BalanceSlider_ValueChanged"></Slider>
+            <Label Grid.Column="2">R</Label>
+        </Grid>
+        <Border Grid.Row="2" Background="#dfdfdf" Height="1"/>
+        <Grid Grid.Row="3" Background="#efefef" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Slider                 
+                Orientation="Vertical"
+                HorizontalAlignment="Center" 
+                Value="1.6" 
+                Maximum="2" 
+                Minimum="0" 
+                ValueChanged="Slider_ValueChanged" />
+
+        </Grid>
+        <Border Width="1" Background="#afafaf" Grid.RowSpan="4" Grid.Column="1"/>
+    </Grid>
+</UserControl>

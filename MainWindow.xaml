@@ -1,0 +1,72 @@
+﻿<Window x:Class="SpGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SpGUI"
+        mc:Ignorable="d"
+        Title="Spleeter GUI" Height="450" Width="800"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="1"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Name="trackGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+            </Grid>
+            <local:MasterTrack Grid.Column="1" x:Name="Master"/>
+        </Grid>
+        <Border Background="#dfdfdf" Grid.Row="1" Height="1"/>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Slider Grid.Column="0" Name="TrackPosition" Background="#efefef" ValueChanged="TrackPosition_ValueChanged">
+            </Slider>
+            <!--<Button Grid.Column="1" Padding="6 0" Name="SkipBackShort" Click="Skip_Click" Tag="-5">&lt;</Button>
+            <Button Grid.Column="2" Padding="6 0" Name="SkipBackLarge" Click="Skip_Click" Tag="-30">&lt;&lt;</Button>-->
+            <Button Grid.Column="3" Padding="5 0" Name="PlayButton" Click="PlayButton_Click">Play/Pause</Button>
+            <!--<Button Grid.Column="4" Padding="6 0" Name="SkipForwardkShort" Click="Skip_Click" Tag="30">&gt;&gt;</Button>
+            <Button Grid.Column="5" Padding="6 0" Name="SkipForwardLarge" Click="Skip_Click" Tag="5">&gt;</Button>-->
+        </Grid>
+        <Border Grid.Row="3" Grid.Column="0" Background="#efefef" Padding="5">
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="75"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0">
+                    <TextBlock TextTrimming="CharacterEllipsis" Text="{Binding Path=WindowStatus, Mode=OneWay}"></TextBlock>
+                </Label>
+                <ComboBox Grid.Column="1" IsEnabled="{Binding Path=WindowReady, Mode=OneWay}" SelectedIndex="5" Name="stemTypeBox">
+                    <ComboBoxItem Tag="2stems">2 Stems</ComboBoxItem>
+                    <ComboBoxItem Tag="4stems">4 Stems</ComboBoxItem>
+                    <ComboBoxItem Tag="5stems">5 Stems</ComboBoxItem>
+                    <ComboBoxItem Tag="2stems-16kHz">2 Stems (16kHz)</ComboBoxItem>
+                    <ComboBoxItem Tag="4stems-16kHz">4 Stems (16kHz)</ComboBoxItem>
+                    <ComboBoxItem Tag="5stems-16kHz">5 Stems (16kHz)</ComboBoxItem>
+                </ComboBox>
+                <Button Grid.Column="2" Width="75" HorizontalAlignment="Right" Click="FileOpen_Click" IsEnabled="{Binding Path=WindowReady, Mode=OneWay}">Split file</Button>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
